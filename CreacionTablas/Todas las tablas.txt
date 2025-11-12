@@ -1,0 +1,71 @@
+-- ************************************************************
+-- SCRIPT SQL PARA CREACIÓN DE TABLAS (MySQL/MariaDB)
+-- ************************************************************
+
+-- 1. TABLA usuario2 (Perfiles de usuario)
+-- Columna: url_perfil para la foto.
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `usuario2` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(100) COLLATE latin1_swedish_ci NOT NULL,
+  `correo` varchar(100) COLLATE latin1_swedish_ci NOT NULL,
+  `contrasena` varchar(100) COLLATE latin1_swedish_ci NOT NULL,
+  `url_perfil` varchar(255) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `pregunta_seguridad` varchar(255) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `respuesta_secreta` varchar(255) COLLATE latin1_swedish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `correo_unique` (`correo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+-- 2. TABLA grupo (Juntas creadas)
+-- Columna: creador_id es FK a usuario2.id
+-- Restricción UNIQUE en nombre_grupo y codigo_invitacion para evitar duplicados.
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `grupo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre_grupo` varchar(100) COLLATE latin1_swedish_ci NOT NULL,
+  `descripcion` varchar(255) COLLATE latin1_swedish_ci DEFAULT NULL,
+  `codigo_invitacion` varchar(10) COLLATE latin1_swedish_ci NOT NULL,
+  `creador_id` int(11) NOT NULL,
+  `url_imagen` varchar(255) COLLATE latin1_swedish_ci DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `nombre_grupo_unique` (`nombre_grupo`),
+  UNIQUE KEY `codigo_invitacion_unique` (`codigo_invitacion`),
+  KEY `creador_id` (`creador_id`),
+  
+  -- Clave Foránea al creador del grupo
+  CONSTRAINT `fk_creador_grupo` 
+    FOREIGN KEY (`creador_id`) 
+    REFERENCES `usuario2` (`id`) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+
+-- 3. TABLA miembro_grupo (Relación N:M entre usuario2 y grupo)
+-- Columna: estado_pago añadida, por defecto 'NO'.
+-- Restricción UNIQUE compuesta para evitar duplicados en la membresía.
+-- --------------------------------------------------------
+CREATE TABLE IF NOT EXISTS `miembro_grupo` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` int(11) NOT NULL,
+  `grupo_id` int(11) NOT NULL,
+  `estado_pago` varchar(2) COLLATE latin1_swedish_ci NOT NULL DEFAULT 'NO',
+  PRIMARY KEY (`id`),
+  
+  -- Clave Única Compuesta para que un usuario solo esté una vez por grupo
+  UNIQUE KEY `uq_miembro_grupo` (`usuario_id`,`grupo_id`), 
+  KEY `grupo_id` (`grupo_id`),
+  
+  -- Clave Foránea al usuario
+  CONSTRAINT `fk_miembro_usuario` 
+    FOREIGN KEY (`usuario_id`) 
+    REFERENCES `usuario2` (`id`) 
+    ON DELETE CASCADE ON UPDATE CASCADE,
+    
+  -- Clave Foránea al grupo
+  CONSTRAINT `fk_miembro_grupo_ref` 
+    FOREIGN KEY (`grupo_id`) 
+    REFERENCES `grupo` (`id`) 
+    ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
