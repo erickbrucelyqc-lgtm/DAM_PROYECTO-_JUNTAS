@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Junta">
+
+    <TextView
+        android:id="@+id/textViewFondoHeader"
+        android:layout_width="0dp"
+        android:layout_height="74dp"
+        android:background="#322599"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditar"
+        android:layout_width="102dp"
+        android:layout_height="46dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginStart="284dp"
+        android:layout_marginTop="288dp"
+        android:backgroundTint="#94FFA0"
+        android:elevation="3dp"
+        android:gravity="center"
+        android:stateListAnimator="@null"
+        android:text="Editar"
+        android:textColor="#000000"
+        android:textColorLink="#251A7C"
+        android:textSize="16sp"
+        android:translationZ="3dp"
+        app:backgroundTint="@null"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="103dp"
+        android:layout_height="67dp"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/volver"
+        android:contentDescription="Botón para volver"/>
+
+    <ImageView
+        android:id="@+id/imageViewUser"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="12dp"
+        android:src="@drawable/images"
+        android:clipToOutline="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/bg_input_field_shadow2" />
+
+    <TextView
+        android:id="@+id/tv_user_dashboard_junta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="Nombre Usuario"
+        android:textColor="#FFFFFF"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/imageViewUser"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/iv_imagen_grupo"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:contentDescription="Imagen del Grupo"
+        android:scaleType="centerCrop"
+        android:src="@drawable/refjunta"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFondoHeader" />
+
+    <TextView
+        android:id="@+id/tv_nombre_grupo_junta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:text="Nombre del Grupo"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        app:layout_constraintTop_toBottomOf="@+id/iv_imagen_grupo"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_titulo_integrantes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="Integrantes del Grupo:"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_nombre_grupo_junta" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvListaMiembros"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_titulo_integrantes"
+        app:layout_constraintVertical_bias="1.0"
+        tools:listitem="@layout/item_miembro" />
+
+    <ImageButton
+        android:id="@+id/btnPagar"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg_circle_button"
+        android:contentDescription="Botón para pagar"
+        android:elevation="6dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/pagar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

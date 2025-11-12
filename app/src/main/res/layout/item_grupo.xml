@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_marginStart="12dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginVertical="8dp"
+    android:layout_marginHorizontal="10dp"
+    android:id="@+id/main_container"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <!-- Imagen del Grupo (Provisionalmente 'user' de tu drawable) -->
+
+        <!-- Nombre del Grupo -->
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_grupo"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:layout_marginBottom="19dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/images"
+            app:civ_border_color="#CCCCCC"
+            app:civ_border_width="1dp" />
+
+        <!-- Descripción Breve del Grupo -->
+        <TextView
+            android:id="@+id/tv_nombre_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/img_grupo"
+            android:text="Nombre del Grupo Aquí"
+            android:textColor="#322599"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Icono de flecha para indicar que es clickeable -->
+        <TextView
+            android:id="@+id/tv_descripcion_grupo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_nombre_grupo"
+            android:layout_marginStart="6dp"
+            android:layout_marginTop="5dp"
+            android:layout_toEndOf="@+id/img_grupo"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Breve descripción de lo que se hace aquí."
+            android:textColor="#666666"
+            android:textSize="14sp" />
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="16dp"
+            android:src="@drawable/entrar"
+            app:tint="#322599" />
+
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

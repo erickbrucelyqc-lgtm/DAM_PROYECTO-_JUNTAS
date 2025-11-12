@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="10dp"
+    android:layout_margin="24dp"> <!-- Añadimos margen para que no toque los bordes -->
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp"
+        android:paddingTop="16dp">
+
+        <!-- Botón de Cerrar (Mantenemos el ID 'cerrar') -->
+        <ImageButton
+            android:id="@+id/cerrar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="@android:color/transparent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Cerrar Diálogo" />
+
+        <!-- Título: ¡Únete a un grupo! (Mantenemos el ID 'textView9') -->
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginEnd="24dp"
+            android:text="¡Únete a un grupo!"
+            android:textAlignment="center"
+            android:textColor="#100F0F"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@+id/cerrar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Etiqueta: CÓDIGO DE INVITACIÓN (Mantenemos el ID 'textView11') -->
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:layout_marginHorizontal="24dp"
+            android:text="INGRESE UN CÓDIGO DE INVITACIÓN"
+            android:textAlignment="center"
+            android:textColor="#100F0F"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+        <!-- Input para el código (Mantenemos el ID 'descripcion', pero lo usaremos como 'et_codigo') -->
+        <EditText
+            android:id="@+id/et_codigo_invitacion"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_input_field_shadow"
+            android:elevation="4dp"
+            android:inputType="textCapCharacters"
+            android:maxLength="6"
+            android:paddingHorizontal="16dp"
+            android:hint="Ej. ABCDE1"
+            android:textColor="#424242"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView11"
+            android:importantForAutofill="no" />
+
+        <!-- Botón de Unirse (Reemplaza al "Cerrar" del XML original, pero mantiene la ubicación) -->
+        <Button
+            android:id="@+id/btn_unirse_final"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="#322599"
+            android:text="UNIRSE"
+            android:textColor="#D9D9D9"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/et_codigo_invitacion" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
